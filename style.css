@@ -1,0 +1,173 @@
+/* Global styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+:root {
+    --text-color: #3e3c3c;
+    --btn-color: #002765;
+    --input-bg-color: #f4f5f7;
+    --card-bg-color: rgba(255, 255, 255, 0.6);
+    --card-blur-bg-color: rgba(255, 255, 255, 0.2);
+    --card-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Container and background */
+.container {
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(187deg, rgba(0, 255, 53, 1) 0%, rgba(241, 255, 0, 1) 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Card styling */
+.todo-app {
+    width: 100%;
+    max-width: 540px;
+    backdrop-filter: blur(20px);
+    box-shadow: var(--card-shadow);
+    background: var(--card-bg-color);
+    padding: 40px 30px 70px;
+    border-radius: 20px;
+    position: relative;
+}
+
+.todo-app::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--card-blur-bg-color);
+    border-radius: 20px;
+    z-index: -1;
+}
+
+.todo-app h2 {
+    color: var(--btn-color);
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    font-size: 30px;
+}
+
+.todo-app h2 img {
+    width: 50px;
+    margin-left: 10px;
+}
+
+/* Input row */
+.row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--input-bg-color);
+    border-radius: 30px;
+    padding-left: 20px;
+    margin-bottom: 25px;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+input {
+    flex: 1;
+    border-radius: 30px;
+    border: none;
+    outline: none;
+    background: transparent;
+    padding: 10px;
+    font-size: 17px;
+    color: var(--text-color);
+}
+
+input::placeholder {
+    color: #aaa;
+}
+
+button {
+    border: none;
+    outline: none;
+    padding: 16px 30px;
+    background: var(--btn-color);
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 30px;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background: #003f88;
+}
+
+/* Task list */
+ul {
+    padding: 0;
+}
+
+ul li {
+    list-style: none;
+    font-size: 17px;
+    padding: 12px 8px 12px 50px;
+    user-select: none;
+    cursor: pointer;
+    position: relative;
+    transition: background 0.3s ease;
+    border-radius: 30px;
+    margin-bottom: 10px;
+    background: var(--input-bg-color);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+ul li:hover {
+    background: #f0f0f0;
+}
+
+ul li::before {
+    content: "";
+    position: absolute;
+    height: 28px;
+    width: 28px;
+    border-radius: 50%;
+    background-image: url(unselected.png);
+    background-size: cover;
+    background-position: center;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+}
+
+ul li.checked {
+    color: var(--text-color);
+    text-decoration: line-through;
+}
+
+ul li.checked::before {
+    background-image: url(selected.png);
+}
+
+ul li span {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 22px;
+    color: var(--text-color);
+    line-height: 40px;
+    text-align: center;
+    border-radius: 50%;
+    transform: translateY(-50%);
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+ul li span:hover {
+    background: var(--btn-color);
+    color: #fff;
+}
